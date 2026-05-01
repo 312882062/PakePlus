@@ -154,7 +154,8 @@ const updateIndexHtml = (
     pwdTip,
     pwdError,
     pwdStyle,
-    pwdTheme
+    pwdTheme,
+    webUrl
 ) => {
     console.log('updateIndexHtml......')
     const indexHtmlPath = path.join(__dirname, '../src/index.html')
@@ -169,6 +170,7 @@ const updateIndexHtml = (
         .replaceAll('pwdError', pwdError)
         .replaceAll('pwdStyle', pwdStyle)
         .replaceAll('pwdTheme', pwdTheme)
+        .replaceAll('https://pakeplus.com/', webUrl)
     fs.writeFileSync(indexHtmlPath, newIndexHtml)
     console.log('updateIndexHtml success')
 }
@@ -274,6 +276,7 @@ const main = async () => {
         pwdError,
         pwdStyle,
         pwdTheme,
+        webUrl,
     } = ppconfig.desktop
     // get windows config
     const winConfig = ppconfig.more.windows
@@ -296,7 +299,8 @@ const main = async () => {
         pwdTip,
         pwdError,
         pwdStyle,
-        pwdTheme
+        pwdTheme,
+        webUrl
     )
     // 更新 cargo.toml
     updateCargoToml(
